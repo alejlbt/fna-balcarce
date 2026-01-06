@@ -207,7 +207,8 @@ df = load_data()
 
 # --- Encabezado de la App ---
 st.markdown("<h1>⛰️ ¡Bienvenido a Balcarce! ⛰️</h1>", unsafe_allow_html=True)
-st.markdown("<h3 class='banner-spacing'>🏎️ 33ª Edición - Fiesta Nacional del Automovilismo 🏁</h3>", unsafe_allow_html=True)
+st.markdown("<h3 class='banner-spacing'>🏎️ Fiesta Nacional del Automovilismo </h3>", unsafe_allow_html=True)
+st.markdown("<h3 class='banner-spacing'>33ª Edición</h3>", unsafe_allow_html=True)
 
 # --- Formulario de Registro ---
 st.markdown("<h2 style='text-align: center; margin-top: 35px;'>Boxes de Información: Contanos sobre vos</h2>", unsafe_allow_html=True)
