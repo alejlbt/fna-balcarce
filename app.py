@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import os
 import datetime
+from streamlit_gsheets import GSheetsConnection
 
 # Estilo basado en el póster de la FNA32
 st.markdown("""
@@ -277,17 +278,14 @@ st.set_page_config(
 DATA_FILE = "visitantes_fna.csv"
 ADMIN_PASSWORD = "balcarce2026"
 
-# --- Cargar o crear el DataFrame ---
-def load_data():
-    if os.path.exists(DATA_FILE):
-        df = pd.read_csv(DATA_FILE)
-        # Asegurar que la columna WhatsApp exista (para compatibilidad con datos antiguos)
-        if "WhatsApp" not in df.columns:
-            df["WhatsApp"] = ""
-        return df
-    return pd.DataFrame(columns=["Timestamp", "Ciudad", "Intereses", "Grupo", "WhatsApp"])
+# --- Conexión a Google Sheets ---
+conn = st.connection("gsheets", type=GSheetsConnection)
 
-df = load_data()
+# Cargamos los datos existentes para contar los cupones
+try:
+    df_gsheet = conn.read(worksheet="Hoja 1")
+except:
+    df_gsheet = pd.DataFrame()
 
 # --- Encabezado de la App ---
 st.markdown("""
@@ -326,27 +324,35 @@ with st.form(key='registro_form'):
         # Validar campos obligatorios
         whatsapp_clean = whatsapp.strip() if whatsapp else ""
         if ciudad and intereses and whatsapp_clean:
-            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            # Convertir la lista de intereses a un string separado por comas
-            intereses_str = ", ".join(intereses)
-            
-            # Agregar el nuevo registro
-            new_entry = pd.DataFrame([{"Timestamp": timestamp, "Ciudad": ciudad, "Intereses": intereses_str, "Grupo": grupo, "WhatsApp": whatsapp_clean}])
-            df = pd.concat([df, new_entry], ignore_index=True)
-            df.to_csv(DATA_FILE, index=False)
-            
-            # Obtener el número de cupón (posición del registro = índice + 1)
-            numero_cupon = len(df)
-            
-            st.success(f"¡Ya estás participando! Tu número de cupón es el #{numero_cupon} 🎉")
-            st.balloons()
+            try:
+                # 1. Preparar los datos
+                timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                intereses_str = ", ".join(intereses)
+                
+                # Creamos una lista con el orden exacto de tus columnas en el Excel
+                # Timestamp, Ciudad, Intereses, Grupo, WhatsApp
+                nueva_fila = [timestamp, ciudad, intereses_str, grupo, whatsapp_clean]
+                
+                # 2. ENVIAR A GOOGLE SHEETS
+                conn.append_row(nueva_fila, worksheet="Hoja 1")
+                
+                # 3. Obtener el número de cupón contando la nube
+                # Volvemos a leer para tener el número exacto
+                df_conteo = conn.read(worksheet="Hoja 1")
+                numero_cupon = len(df_conteo)
+                
+                st.success(f"¡Ya estás participando! Tu número de cupón es el #{numero_cupon} 🎉")
+                st.balloons()
+                
+            except Exception as e:
+                st.error(f"Error al conectar con la planilla: {e}")
         else:
             if not ciudad:
                 st.error("Por favor, completá tu ciudad.")
             elif not intereses:
                 st.error("Por favor, seleccioná al menos un interés.")
             elif not whatsapp_clean:
-                st.error("Por favor, completá tu número de WhatsApp para participar del sorteo.")
+                st.error("Por favor, completá tu WhatsApp para el sorteo.")
 
 st.markdown("---")
 
