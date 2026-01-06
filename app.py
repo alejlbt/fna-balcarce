@@ -25,6 +25,7 @@ st.markdown("""
     h2 {
         text-align: center !important;
         font-size: clamp(1.2rem, 4vw, 2rem); /* Tamaño adaptable */
+        text-wrap: balance !important; /* Reparte palabras equilibradamente */
     }
     
     h3 {
@@ -99,20 +100,24 @@ st.markdown("""
             padding-right: 1rem !important;
         }
         
-        /* Títulos más pequeños en móviles */
+        /* Título de bienvenida: mantiene sierras juntas */
         h1 {
-            font-size: 1.8rem !important;
+            font-size: 6vw !important;
             border-bottom-width: 3px !important;
             padding-bottom: 8px !important;
+            white-space: nowrap !important; /* Mantiene la frase y sierras en la misma línea */
         }
         
         h2 {
             font-size: 1.4rem !important;
             margin-top: 20px !important;
+            text-wrap: balance !important;
         }
         
+        /* Banner con salto de línea armonioso */
         h3 {
-            font-size: 1.1rem !important;
+            font-size: 4.5vw !important;
+            line-height: 1.2 !important; /* Salto de línea armonioso */
         }
         
         /* Botón con ancho completo en móviles para fácil toque */
@@ -131,20 +136,50 @@ st.markdown("""
     /* Ajustes adicionales para pantallas muy pequeñas */
     @media screen and (max-width: 480px) {
         h1 {
-            font-size: 1.5rem !important;
+            font-size: 6vw !important; /* Mantiene proporción dinámica */
+            white-space: nowrap !important;
         }
         
         h2 {
             font-size: 1.2rem !important;
+            text-wrap: balance !important;
         }
         
         h3 {
-            font-size: 1rem !important;
+            font-size: 4.5vw !important;
+            line-height: 1.2 !important;
         }
         
         .main .block-container {
             padding-left: 0.75rem !important;
             padding-right: 0.75rem !important;
+        }
+    }
+    
+    /* Escalado proporcional de paddings para pantallas menores a 400px */
+    @media screen and (max-width: 400px) {
+        .stApp {
+            padding-left: 5px !important;
+            padding-right: 5px !important;
+        }
+        
+        .main .block-container {
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+        
+        h1 {
+            padding-bottom: 6px !important;
+        }
+        
+        h2 {
+            margin-top: 15px !important;
+        }
+        
+        .banner-spacing {
+            margin-bottom: 20px !important;
         }
     }
     </style>
