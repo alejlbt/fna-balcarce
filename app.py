@@ -225,7 +225,7 @@ with st.form(key='registro_form'):
     
     intereses = st.multiselect(
         "¿Qué es lo que más te interesa de la fiesta?",
-        options=["Automovilismo", "Gastronomía", "Shows", "Feria de Artesanos", "Museo Fangio", "Productores Locales"],
+        options=["Automovilismo", "Gastronomía", "Shows", "Feria de Artesanos", "Museo Fangio", "Productos Locales"],
         default=None,
         placeholder="Seleccioná una o más opciones"
     )
@@ -317,4 +317,5 @@ if admin_input == ADMIN_PASSWORD:
         
 elif admin_input:  # Si ingresó algo pero no es la contraseña correcta
     st.sidebar.error("Contraseña incorrecta")
+
 
