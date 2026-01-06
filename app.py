@@ -77,7 +77,7 @@ with st.form(key='registro_form'):
                     # 3. Subir TODO de nuevo (así funciona la versión nueva)
                     conn.update(worksheet="Hoja 1", data=df_actualizado)
                     
-                    st.success(f"¡Registrado con éxito! Tu cupón es el #{Len(df_actualizado)} 🎉")
+                    st.success(f"¡Registrado con éxito! Tu cupón es el #{len(df_actualizado)} 🎉")
                     st.balloons()
                 except Exception as e:
                     st.error(f"Error al guardar: {e}")
@@ -103,3 +103,4 @@ if admin_input == ADMIN_PASSWORD:
 
 elif admin_input: # Este es el que daba error de identación
     st.sidebar.error("Contraseña incorrecta")
+
