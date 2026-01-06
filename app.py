@@ -208,9 +208,9 @@ st.markdown("""
 st.markdown("""
     <div style="text-align: center; padding: 10px 0px;">
         <h1 style="color: #E30613; line-height: 1.1; margin-bottom: 10px; font-family: 'Orbitron', sans-serif;">
-            <span style="font-size: 2.5rem; display: block;">FIESTA NACIONAL</span>
+            <span style="font-size: 2.2rem; display: block;">FIESTA NACIONAL</span>
             <span style="font-size: 1.8rem; display: block; opacity: 0.9;">del</span>
-            <span style="font-size: 2.5rem; display: block;">AUTOMOVILISMO</span>
+            <span style="font-size: 2.2rem; display: block;">AUTOMOVILISMO</span>
         </h1>
         <p style="margin-top: 0px; font-size: 1.5rem; font-weight: bold; color: #FFFFFF; letter-spacing: 3px; border-top: 2px solid #E30613; display: inline-block; padding-top: 5px;">
             33ª EDICIÓN
@@ -319,6 +319,7 @@ if admin_input == ADMIN_PASSWORD:
         
 elif admin_input:  # Si ingresó algo pero no es la contraseña correcta
     st.sidebar.error("Contraseña incorrecta")
+
 
 
 
