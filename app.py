@@ -55,22 +55,34 @@ with st.form(key='registro_form'):
     submit_button = st.form_submit_button(label='Terminar 🏁')
 
     if submit_button:
-        if ciudad and intereses and whatsapp:
-            try:
-                timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                nueva_fila = [timestamp, ciudad, ", ".join(intereses), grupo, whatsapp]
-                
-                # Guardar en Google Sheets
-                conn.append_row(nueva_fila, worksheet="Hoja 1")
-                
-                # Obtener número de cupón
-                df_actualizado = conn.read(worksheet="Hoja 1", ttl=0)
-                st.success(f"¡Registrado! Tu cupón es el #{len(df_actualizado)} 🎉")
-                st.balloons()
-            except Exception as e:
-                st.error(f"Error al guardar: {e}")
-        else:
-            st.warning("Completá todos los campos, por favor.")
+            if ciudad and intereses and whatsapp:
+                try:
+                    # 1. Preparar los datos nuevos
+                    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    nueva_fila = pd.DataFrame([{
+                        "Timestamp": timestamp,
+                        "Ciudad": ciudad,
+                        "Intereses": ", ".join(intereses),
+                        "Grupo": grupo,
+                        "WhatsApp": whatsapp
+                    }])
+
+                    # 2. Combinar con los datos existentes
+                    # Leemos la planilla actual
+                    df_existente = conn.read(worksheet="Hoja 1", ttl=0)
+                    
+                    # Unimos lo viejo con lo nuevo
+                    df_actualizado = pd.concat([df_existente, nueva_fila], ignore_index=True)
+
+                    # 3. Subir TODO de nuevo (así funciona la versión nueva)
+                    conn.update(worksheet="Hoja 1", data=df_actualizado)
+                    
+                    st.success(f"¡Registrado con éxito! Tu cupón es el #{Len(df_actualizado)} 🎉")
+                    st.balloons()
+                except Exception as e:
+                    st.error(f"Error al guardar: {e}")
+    else:
+        st.warning("Completá todos los campos, por favor.")
 
 # --- 6. SECCIÓN ADMINISTRADOR (CORREGIDA) ---
 st.sidebar.title("Panel Admin")
