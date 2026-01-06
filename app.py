@@ -290,13 +290,14 @@ def load_data():
 df = load_data()
 
 # --- Encabezado de la App ---
-st.markdown("<h1>¡Bienvenido a Balcarce ⛰️</h1>", unsafe_allow_html=True)
 st.markdown("""
-    <h3 class="banner-title">
-        Fiesta Nacional del Automovilismo 🏎️
-        <span class="banner-subtitle">33ª Edición</span>
-    </h3>
-    """, unsafe_allow_html=True)
+    <div style="text-align: center; padding: 0px;">
+        <h2 style="margin-bottom: 0px; font-size: 28px;">⛰️ ¡Bienvenido a Balcarce!</h2>
+        <h1 style="margin-top: 0px; margin-bottom: 5px; font-size: 22px; color: #E30613;">Fiesta Nacional del Automovilismo 🏎️</h1>
+        <p style="margin-top: -10px; font-size: 18px; font-weight: bold; opacity: 0.9;">33ª Edición</p>
+    </div>
+    <hr style="margin-top: 5px; margin-bottom: 20px; border: 1px solid #E30613;">
+""", unsafe_allow_html=True)
 
 # --- Formulario de Registro ---
 st.markdown("<h2>Boxes de Información: Contanos sobre vos</h2>", unsafe_allow_html=True)
@@ -395,5 +396,3 @@ if admin_input == ADMIN_PASSWORD:
         st.info("Aún no hay registros de visitantes para mostrar estadísticas.")
 elif admin_input: # Si ingresó algo pero no es la contraseña correcta
     st.sidebar.error("Contraseña incorrecta")
-
-
