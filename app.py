@@ -203,17 +203,19 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# --- ENCABEZADO ---
+
+# --- ENCABEZADO OPTIMIZADO PARA MÓVIL ---
 st.markdown("""
-    <div style="text-align: center; padding: 20px 0px;">
-        <h1 style="margin-bottom: 0px; color: #E30613; font-size: 2.5rem;">
-            Fiesta Nacional del Automovilismo 🏎️
+    <div style="text-align: center; padding: 10px 0px;">
+        <h1 style="color: #E30613; line-height: 1.1; margin-bottom: 10px; font-family: 'Orbitron', sans-serif;">
+            <span style="font-size: 2.8rem; display: block;">FIESTA NACIONAL</span>
+            <span style="font-size: 1.8rem; display: block; opacity: 0.9;">del</span>
+            <span style="font-size: 2.8rem; display: block;">AUTOMOVILISMO</span>
         </h1>
-        <p style="margin-top: 5px; font-size: 1.5rem; font-weight: bold; color: #FFFFFF; letter-spacing: 2px;">
+        <p style="margin-top: 0px; font-size: 1.5rem; font-weight: bold; color: #FFFFFF; letter-spacing: 3px; border-top: 2px solid #E30613; display: inline-block; padding-top: 5px;">
             33ª EDICIÓN
         </p>
     </div>
-    <hr style="border: 1px solid #E30613; margin-top: -10px; margin-bottom: 30px;">
 """, unsafe_allow_html=True)
 
 # --- FORMULARIO DE REGISTRO ---
@@ -317,5 +319,6 @@ if admin_input == ADMIN_PASSWORD:
         
 elif admin_input:  # Si ingresó algo pero no es la contraseña correcta
     st.sidebar.error("Contraseña incorrecta")
+
 
 
