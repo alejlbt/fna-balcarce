@@ -267,8 +267,37 @@ with st.form(key='registro_form'):
                 # 4. Guardar todo el DataFrame actualizado usando conn.update(worksheet="Hoja 1", data=df_final)
                 conn.update(worksheet="Hoja 1", data=df_final)
                 
-                # Éxito: Limpiar formulario (se limpia automáticamente en Streamlit), lanzar st.balloons() y mostrar mensaje
-                st.balloons()
+                # Éxito: Limpiar formulario (se limpia automáticamente en Streamlit), # --- Animación de Banderas a Cuadros --- y mostrar mensaje
+                st.markdown("""
+                    <div class="flags-container">
+                        <div class="checker-flag">🏁</div><div class="checker-flag">🏁</div>
+                        <div class="checker-flag">🏁</div><div class="checker-flag">🏁</div>
+                        <div class="checker-flag">🏁</div><div class="checker-flag">🏁</div>
+                        <div class="checker-flag">🏁</div><div class="checker-flag">🏁</div>
+                    </div>
+                    <style>
+                        .checker-flag {
+                            position: fixed;
+                            top: -50px;
+                            font-size: 45px;
+                            z-index: 9999;
+                            animation: fall 3s linear forwards;
+                        }
+                        @keyframes fall {
+                            to {
+                                transform: translateY(110vh) rotate(720deg);
+                            }
+                        }
+                        .checker-flag:nth-child(1) { left: 5%; animation-delay: 0s; }
+                        .checker-flag:nth-child(2) { left: 20%; animation-delay: 0.4s; }
+                        .checker-flag:nth-child(3) { left: 35%; animation-delay: 0.2s; }
+                        .checker-flag:nth-child(4) { left: 50%; animation-delay: 0.8s; }
+                        .checker-flag:nth-child(5) { left: 65%; animation-delay: 0.3s; }
+                        .checker-flag:nth-child(6) { left: 80%; animation-delay: 0.6s; }
+                        .checker-flag:nth-child(7) { left: 90%; animation-delay: 1.1s; }
+                        .checker-flag:nth-child(8) { left: 15%; animation-delay: 0.5s; }
+                    </style>
+                """, unsafe_allow_html=True)
                 numero_cupon = len(df_final)
                 st.success(f"¡REGISTRO EXITOSO! Tu número de cupón es: #{numero_cupon}")
                 
@@ -319,6 +348,7 @@ if admin_input == ADMIN_PASSWORD:
         
 elif admin_input:  # Si ingresó algo pero no es la contraseña correcta
     st.sidebar.error("Contraseña incorrecta")
+
 
 
 
