@@ -9,6 +9,12 @@ st.markdown("""
     /* Fondo principal en Negro */
     .stApp {
         background-color: #000000;
+        max-width: 100% !important;
+    }
+    
+    /* Asegurar que todo el contenido tenga max-width 100% */
+    .main .block-container {
+        max-width: 100% !important;
     }
     
     /* Títulos en Blanco con acento en Rojo - Centrados */
@@ -19,6 +25,7 @@ st.markdown("""
         padding-bottom: 10px;
         text-align: center !important;
         font-size: clamp(1.5rem, 5vw, 2.5rem); /* Tamaño adaptable */
+        letter-spacing: 0.5px !important; /* Look moderno */
     }
     
     /* Subtítulos y headers centrados */
@@ -40,31 +47,32 @@ st.markdown("""
         text-align: center !important;
     }
     
-    /* Primer h3 del banner - Fiesta Nacional del Automovilismo */
-    h3.banner-spacing {
-        margin-bottom: 5px !important; /* Separación entre los dos h3 */
-        font-size: clamp(0.95rem, 4vw, 1.6rem) !important;
-        white-space: nowrap !important; /* Mantener en una línea si es posible */
+    /* Banner unificado - Fiesta Nacional del Automovilismo */
+    .banner-title {
+        text-align: center !important;
+        font-size: clamp(1.2rem, 4vw, 1.8rem) !important;
+        color: #FFFFFF !important;
+        margin-bottom: 8px !important;
+        letter-spacing: 0.8px !important; /* Look moderno y premium */
     }
     
-    /* Segundo h3 del banner - 33ª Edición (hermano adyacente) */
-    h3.banner-spacing + h3.banner-spacing {
-        margin-bottom: 8px !important; /* Espacio reducido antes del formulario */
-        font-size: clamp(0.85rem, 3.5vw, 1.4rem) !important;
-        margin-top: 0 !important;
+    /* Subtítulo 33ª Edición dentro del banner */
+    .banner-subtitle {
+        margin-top: -20px !important;
+        display: block !important;
+        font-size: 0.8em !important;
+        opacity: 0.8 !important;
+        color: #FFFFFF !important;
     }
     
-    /* Mensaje de sorteo - estilo llamativo */
+    /* Mensaje de sorteo - texto rojo y negrita */
     .sorteo-mensaje {
-        background-color: #E30613 !important;
-        color: white !important;
-        padding: 12px 16px !important;
-        border-radius: 8px !important;
+        color: #E30613 !important;
         text-align: center !important;
         font-weight: bold !important;
-        font-size: clamp(0.9rem, 2.5vw, 1.1rem) !important;
-        margin: 15px 0 10px 0 !important;
-        box-shadow: 0 2px 4px rgba(227, 6, 19, 0.3) !important;
+        font-size: clamp(0.95rem, 2.5vw, 1.1rem) !important;
+        margin: 12px 0 8px 0 !important;
+        padding: 0 !important;
     }
     
     /* Textos y etiquetas en Blanco */
@@ -93,15 +101,22 @@ st.markdown("""
     .stButton>button {
         background-color: #E30613 !important;
         color: white !important;
-        border-radius: 5px;
+        border-radius: 10px !important;
         border: none;
         font-weight: bold !important;
         width: 100%;
+        max-width: 100% !important;
+        transition: all 0.3s ease !important;
     }
     
     .stButton>button:hover {
         background-color: #C00510 !important;
-        border: 1px solid white;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 4px 8px rgba(227, 6, 19, 0.4) !important;
+    }
+    
+    .stButton>button:active {
+        transform: translateY(0) !important;
     }
     
     /* Optimización de imágenes y logos */
@@ -142,26 +157,20 @@ st.markdown("""
             text-wrap: balance !important;
         }
         
-        /* Banner unido - primer h3 */
-        h3.banner-spacing {
-            font-size: clamp(0.95rem, 4vw, 1.4rem) !important;
-            margin-bottom: 3px !important; /* Separación mínima entre los dos h3 */
-            line-height: 1.1 !important;
-            white-space: nowrap !important;
+        .banner-title {
+            font-size: clamp(1rem, 3.8vw, 1.5rem) !important;
+            margin-bottom: 6px !important;
         }
         
-        /* Banner unido - segundo h3 */
-        h3.banner-spacing + h3.banner-spacing {
-            font-size: clamp(0.85rem, 3.5vw, 1.3rem) !important;
-            margin-bottom: 8px !important; /* Espacio reducido antes del formulario */
-            line-height: 1.1 !important;
-            margin-top: 0 !important;
+        .banner-subtitle {
+            margin-top: -18px !important;
+            font-size: 0.75em !important;
         }
         
         /* Mensaje de sorteo en móviles */
         .sorteo-mensaje {
-            padding: 10px 12px !important;
-            margin: 12px 0 8px 0 !important;
+            margin: 10px 0 6px 0 !important;
+            font-size: clamp(0.85rem, 2.2vw, 1rem) !important;
         }
         
         /* Botón con ancho completo en móviles para fácil toque */
@@ -189,20 +198,19 @@ st.markdown("""
             text-wrap: balance !important;
         }
         
-        h3.banner-spacing {
-            font-size: clamp(0.85rem, 3.8vw, 1.2rem) !important;
-            margin-bottom: 2px !important;
+        .banner-title {
+            font-size: clamp(0.9rem, 3.5vw, 1.3rem) !important;
+            margin-bottom: 5px !important;
         }
         
-        h3.banner-spacing + h3.banner-spacing {
-            font-size: clamp(0.75rem, 3.2vw, 1.1rem) !important;
-            margin-bottom: 6px !important;
-            margin-top: 0 !important;
+        .banner-subtitle {
+            margin-top: -15px !important;
+            font-size: 0.7em !important;
         }
         
         .sorteo-mensaje {
-            padding: 8px 10px !important;
-            margin: 10px 0 6px 0 !important;
+            margin: 8px 0 5px 0 !important;
+            font-size: clamp(0.8rem, 2vw, 0.95rem) !important;
         }
         
         .main .block-container {
@@ -239,20 +247,19 @@ st.markdown("""
             line-height: 1.1 !important;
         }
         
-        h3.banner-spacing {
-            margin-bottom: 2px !important;
-            font-size: clamp(0.8rem, 3.5vw, 1.1rem) !important;
+        .banner-title {
+            font-size: clamp(0.85rem, 3.2vw, 1.2rem) !important;
+            margin-bottom: 4px !important;
         }
         
-        h3.banner-spacing + h3.banner-spacing {
-            margin-bottom: 5px !important;
-            font-size: clamp(0.7rem, 3vw, 1rem) !important;
-            margin-top: 0 !important;
+        .banner-subtitle {
+            margin-top: -12px !important;
+            font-size: 0.65em !important;
         }
         
         .sorteo-mensaje {
-            padding: 8px 8px !important;
-            margin: 8px 0 5px 0 !important;
+            margin: 6px 0 4px 0 !important;
+            font-size: clamp(0.75rem, 1.8vw, 0.9rem) !important;
         }
     }
     </style>
@@ -283,9 +290,13 @@ def load_data():
 df = load_data()
 
 # --- Encabezado de la App ---
-st.markdown("<h1>⛰️ ¡Bienvenido a Balcarce! ⛰️</h1>", unsafe_allow_html=True)
-st.markdown("<h3 class='banner-spacing'>🏎️ Fiesta Nacional del Automovilismo </h3>", unsafe_allow_html=True)
-st.markdown("<h3 class='banner-spacing'>33ª Edición</h3>", unsafe_allow_html=True)
+st.markdown("<h1>¡Bienvenido a Balcarce ⛰️</h1>", unsafe_allow_html=True)
+st.markdown("""
+    <h3 class="banner-title">
+        Fiesta Nacional del Automovilismo 🏎️
+        <span class="banner-subtitle">33ª Edición</span>
+    </h3>
+    """, unsafe_allow_html=True)
 
 # --- Formulario de Registro ---
 st.markdown("<h2>Boxes de Información: Contanos sobre vos</h2>", unsafe_allow_html=True)
@@ -303,10 +314,10 @@ with st.form(key='registro_form'):
 
     grupo = st.number_input("¿Cuántos integran tu grupo?", min_value=1, value=1, step=1)
     
-    whatsapp = st.text_input("WhatsApp de contacto *", placeholder="Ej: +5492231234567", help="Número con código de país para el sorteo")
+    whatsapp = st.text_input("WhatsApp de contacto *", placeholder="Ej: 2266554433", help="Número con código de país para el sorteo")
 
-    # Mensaje llamativo de sorteo
-    st.markdown('<div class="sorteo-mensaje">¡Registrate ahora y participá del sorteo de la 33ª Edición! 🏆</div>', unsafe_allow_html=True)
+    # Mensaje de sorteo
+    st.markdown('<div class="sorteo-mensaje">🏆 ¡Registrate y participá del sorteo oficial de la FNA33!</div>', unsafe_allow_html=True)
     
     submit_button = st.form_submit_button(label='Terminar 🏁 ')
 
@@ -326,7 +337,7 @@ with st.form(key='registro_form'):
             # Obtener el número de cupón (posición del registro = índice + 1)
             numero_cupon = len(df)
             
-            st.success(f"¡Ya estás participando! Tu número de cupón es el #{numero_cupon}")
+            st.success(f"¡Ya estás participando! Tu número de cupón es el #{numero_cupon} 🎉")
             st.balloons()
         else:
             if not ciudad:
@@ -384,4 +395,5 @@ if admin_input == ADMIN_PASSWORD:
         st.info("Aún no hay registros de visitantes para mostrar estadísticas.")
 elif admin_input: # Si ingresó algo pero no es la contraseña correcta
     st.sidebar.error("Contraseña incorrecta")
+
 
