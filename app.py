@@ -204,13 +204,17 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # --- ENCABEZADO ---
-st.markdown("<h1>¡Bienvenido a Balcarce ⛰️</h1>", unsafe_allow_html=True)
 st.markdown("""
-    <h3 class="banner-title">
-        Fiesta Nacional del Automovilismo 🏎️
-        <span class="banner-subtitle">33ª Edición</span>
-    </h3>
-    """, unsafe_allow_html=True)
+    <div style="text-align: center; padding: 20px 0px;">
+        <h1 style="margin-bottom: 0px; color: #E30613; font-size: 2.5rem;">
+            Fiesta Nacional del Automovilismo 🏎️
+        </h1>
+        <p style="margin-top: 5px; font-size: 1.5rem; font-weight: bold; color: #FFFFFF; letter-spacing: 2px;">
+            33ª EDICIÓN
+        </p>
+    </div>
+    <hr style="border: 1px solid #E30613; margin-top: -10px; margin-bottom: 30px;">
+""", unsafe_allow_html=True)
 
 # --- FORMULARIO DE REGISTRO ---
 st.markdown("<h2>Boxes de Información: Contanos sobre vos</h2>", unsafe_allow_html=True)
@@ -313,3 +317,4 @@ if admin_input == ADMIN_PASSWORD:
         
 elif admin_input:  # Si ingresó algo pero no es la contraseña correcta
     st.sidebar.error("Contraseña incorrecta")
+
