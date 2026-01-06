@@ -30,7 +30,9 @@ st.markdown("""
     
     h3 {
         text-align: center !important;
-        font-size: clamp(1rem, 3.5vw, 1.5rem); /* Tamaño adaptable */
+        font-size: clamp(0.9rem, 3.5vw, 1.5rem); /* Tamaño adaptable con clamp */
+        margin: 0 !important; /* Eliminar márgenes por defecto */
+        line-height: 1.1 !important;
     }
     
     /* Headers de Streamlit centrados */
@@ -38,9 +40,31 @@ st.markdown("""
         text-align: center !important;
     }
     
-    /* Espaciado después del banner de la 33ª edición */
-    .banner-spacing {
-        margin-bottom: 35px !important;
+    /* Primer h3 del banner - Fiesta Nacional del Automovilismo */
+    h3.banner-spacing {
+        margin-bottom: 5px !important; /* Separación entre los dos h3 */
+        font-size: clamp(0.95rem, 4vw, 1.6rem) !important;
+        white-space: nowrap !important; /* Mantener en una línea si es posible */
+    }
+    
+    /* Segundo h3 del banner - 33ª Edición (hermano adyacente) */
+    h3.banner-spacing + h3.banner-spacing {
+        margin-bottom: 8px !important; /* Espacio reducido antes del formulario */
+        font-size: clamp(0.85rem, 3.5vw, 1.4rem) !important;
+        margin-top: 0 !important;
+    }
+    
+    /* Mensaje de sorteo - estilo llamativo */
+    .sorteo-mensaje {
+        background-color: #E30613 !important;
+        color: white !important;
+        padding: 12px 16px !important;
+        border-radius: 8px !important;
+        text-align: center !important;
+        font-weight: bold !important;
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem) !important;
+        margin: 15px 0 10px 0 !important;
+        box-shadow: 0 2px 4px rgba(227, 6, 19, 0.3) !important;
     }
     
     /* Textos y etiquetas en Blanco */
@@ -102,57 +126,89 @@ st.markdown("""
         
         /* Título de bienvenida: mantiene sierras juntas */
         h1 {
-            font-size: 6vw !important;
+            font-size: clamp(1.2rem, 6vw, 2rem) !important;
             border-bottom-width: 3px !important;
-            padding-bottom: 8px !important;
-            white-space: nowrap !important; /* Mantiene la frase y sierras en la misma línea */
+            padding-bottom: 6px !important;
+            margin-bottom: 10px !important;
+            white-space: nowrap !important;
         }
         
+        /* Título del formulario: compacto en móviles */
         h2 {
-            font-size: 1.4rem !important;
-            margin-top: 20px !important;
+            font-size: clamp(1rem, 3.5vw, 1.4rem) !important;
+            margin-top: 10px !important;
+            margin-bottom: 5px !important;
+            line-height: 1.1 !important;
             text-wrap: balance !important;
         }
         
-        /* Banner con salto de línea armonioso */
-        h3 {
-            font-size: 4.5vw !important;
-            line-height: 1.2 !important; /* Salto de línea armonioso */
+        /* Banner unido - primer h3 */
+        h3.banner-spacing {
+            font-size: clamp(0.95rem, 4vw, 1.4rem) !important;
+            margin-bottom: 3px !important; /* Separación mínima entre los dos h3 */
+            line-height: 1.1 !important;
+            white-space: nowrap !important;
+        }
+        
+        /* Banner unido - segundo h3 */
+        h3.banner-spacing + h3.banner-spacing {
+            font-size: clamp(0.85rem, 3.5vw, 1.3rem) !important;
+            margin-bottom: 8px !important; /* Espacio reducido antes del formulario */
+            line-height: 1.1 !important;
+            margin-top: 0 !important;
+        }
+        
+        /* Mensaje de sorteo en móviles */
+        .sorteo-mensaje {
+            padding: 10px 12px !important;
+            margin: 12px 0 8px 0 !important;
         }
         
         /* Botón con ancho completo en móviles para fácil toque */
         .stButton>button {
             width: 100% !important;
-            min-height: 44px !important; /* Tamaño mínimo recomendado para toque */
+            min-height: 44px !important;
             font-size: 1rem !important;
-        }
-        
-        /* Espaciado del banner ajustado en móviles */
-        .banner-spacing {
-            margin-bottom: 25px !important;
         }
     }
     
     /* Ajustes adicionales para pantallas muy pequeñas */
     @media screen and (max-width: 480px) {
         h1 {
-            font-size: 6vw !important; /* Mantiene proporción dinámica */
+            font-size: clamp(1rem, 5.5vw, 1.8rem) !important;
+            padding-bottom: 5px !important;
+            margin-bottom: 8px !important;
             white-space: nowrap !important;
         }
         
         h2 {
-            font-size: 1.2rem !important;
+            font-size: clamp(0.9rem, 3.2vw, 1.2rem) !important;
+            margin-top: 8px !important;
+            margin-bottom: 3px !important;
+            line-height: 1.1 !important;
             text-wrap: balance !important;
         }
         
-        h3 {
-            font-size: 4.5vw !important;
-            line-height: 1.2 !important;
+        h3.banner-spacing {
+            font-size: clamp(0.85rem, 3.8vw, 1.2rem) !important;
+            margin-bottom: 2px !important;
+        }
+        
+        h3.banner-spacing + h3.banner-spacing {
+            font-size: clamp(0.75rem, 3.2vw, 1.1rem) !important;
+            margin-bottom: 6px !important;
+            margin-top: 0 !important;
+        }
+        
+        .sorteo-mensaje {
+            padding: 8px 10px !important;
+            margin: 10px 0 6px 0 !important;
         }
         
         .main .block-container {
             padding-left: 0.75rem !important;
             padding-right: 0.75rem !important;
+            padding-top: 0.5rem !important;
         }
     }
     
@@ -166,20 +222,37 @@ st.markdown("""
         .main .block-container {
             padding-left: 0.5rem !important;
             padding-right: 0.5rem !important;
-            padding-top: 1rem !important;
-            padding-bottom: 1rem !important;
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.75rem !important;
         }
         
         h1 {
-            padding-bottom: 6px !important;
+            padding-bottom: 4px !important;
+            margin-bottom: 6px !important;
+            font-size: clamp(0.9rem, 5vw, 1.6rem) !important;
         }
         
         h2 {
-            margin-top: 15px !important;
+            margin-top: 6px !important;
+            margin-bottom: 2px !important;
+            font-size: clamp(0.85rem, 3vw, 1.1rem) !important;
+            line-height: 1.1 !important;
         }
         
-        .banner-spacing {
-            margin-bottom: 20px !important;
+        h3.banner-spacing {
+            margin-bottom: 2px !important;
+            font-size: clamp(0.8rem, 3.5vw, 1.1rem) !important;
+        }
+        
+        h3.banner-spacing + h3.banner-spacing {
+            margin-bottom: 5px !important;
+            font-size: clamp(0.7rem, 3vw, 1rem) !important;
+            margin-top: 0 !important;
+        }
+        
+        .sorteo-mensaje {
+            padding: 8px 8px !important;
+            margin: 8px 0 5px 0 !important;
         }
     }
     </style>
@@ -200,8 +273,12 @@ ADMIN_PASSWORD = "balcarce2026"
 # --- Cargar o crear el DataFrame ---
 def load_data():
     if os.path.exists(DATA_FILE):
-        return pd.read_csv(DATA_FILE)
-    return pd.DataFrame(columns=["Timestamp", "Ciudad", "Intereses", "Grupo"])
+        df = pd.read_csv(DATA_FILE)
+        # Asegurar que la columna WhatsApp exista (para compatibilidad con datos antiguos)
+        if "WhatsApp" not in df.columns:
+            df["WhatsApp"] = ""
+        return df
+    return pd.DataFrame(columns=["Timestamp", "Ciudad", "Intereses", "Grupo", "WhatsApp"])
 
 df = load_data()
 
@@ -211,10 +288,10 @@ st.markdown("<h3 class='banner-spacing'>🏎️ Fiesta Nacional del Automovilism
 st.markdown("<h3 class='banner-spacing'>33ª Edición</h3>", unsafe_allow_html=True)
 
 # --- Formulario de Registro ---
-st.markdown("<h2 style='text-align: center; margin-top: 35px;'>Boxes de Información: Contanos sobre vos</h2>", unsafe_allow_html=True)
+st.markdown("<h2>Boxes de Información: Contanos sobre vos</h2>", unsafe_allow_html=True)
 
 with st.form(key='registro_form'):
-    ciudad = st.text_input("¿Desde qué ciudad nos visitás?").strip().upper() # .strip() y .upper() aquí
+    ciudad = st.text_input("¿Desde qué ciudad nos visitás?").strip().upper()
     
     intereses = st.multiselect(
         "¿Qué es lo que más te interesa de la fiesta?",
@@ -225,22 +302,39 @@ with st.form(key='registro_form'):
     )
 
     grupo = st.number_input("¿Cuántos integran tu grupo?", min_value=1, value=1, step=1)
+    
+    whatsapp = st.text_input("WhatsApp de contacto *", placeholder="Ej: +5492231234567", help="Número con código de país para el sorteo")
 
+    # Mensaje llamativo de sorteo
+    st.markdown('<div class="sorteo-mensaje">¡Registrate ahora y participá del sorteo de la 33ª Edición! 🏆</div>', unsafe_allow_html=True)
+    
     submit_button = st.form_submit_button(label='Terminar 🏁 ')
 
     if submit_button:
-        if ciudad and intereses: # Asegurarse de que no estén vacíos
+        # Validar campos obligatorios
+        whatsapp_clean = whatsapp.strip() if whatsapp else ""
+        if ciudad and intereses and whatsapp_clean:
             timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             # Convertir la lista de intereses a un string separado por comas
             intereses_str = ", ".join(intereses)
             
-            new_entry = pd.DataFrame([{"Timestamp": timestamp, "Ciudad": ciudad, "Intereses": intereses_str, "Grupo": grupo}])
+            # Agregar el nuevo registro
+            new_entry = pd.DataFrame([{"Timestamp": timestamp, "Ciudad": ciudad, "Intereses": intereses_str, "Grupo": grupo, "WhatsApp": whatsapp_clean}])
             df = pd.concat([df, new_entry], ignore_index=True)
             df.to_csv(DATA_FILE, index=False)
-            st.success(f"¡Gracias! Ya registramos tu visita desde {ciudad}. 🎉")
-            st.balloons() # ¡Los globos de festejo!
+            
+            # Obtener el número de cupón (posición del registro = índice + 1)
+            numero_cupon = len(df)
+            
+            st.success(f"¡Ya estás participando! Tu número de cupón es el #{numero_cupon}")
+            st.balloons()
         else:
-            st.error("Por favor, completá tu ciudad y al menos un interés.")
+            if not ciudad:
+                st.error("Por favor, completá tu ciudad.")
+            elif not intereses:
+                st.error("Por favor, seleccioná al menos un interés.")
+            elif not whatsapp_clean:
+                st.error("Por favor, completá tu número de WhatsApp para participar del sorteo.")
 
 st.markdown("---")
 
@@ -290,3 +384,4 @@ if admin_input == ADMIN_PASSWORD:
         st.info("Aún no hay registros de visitantes para mostrar estadísticas.")
 elif admin_input: # Si ingresó algo pero no es la contraseña correcta
     st.sidebar.error("Contraseña incorrecta")
+
